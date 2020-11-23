@@ -11,7 +11,7 @@ module.exports = {
             falemais_id
         });
 
-        return response.json('Cadastrado com Sucesso, Faça login com seu CPF cadastrado');
+        return response.json(`Cadastrado com Sucesso, Faça login com seu CPF cadastrado:${cpf}`);
     },
     async list(request, response){
         const users = await connection('users').select('*');

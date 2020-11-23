@@ -13,88 +13,72 @@ module.exports = {
         const origem = await connection('ddd').where('cod', id_origem);
         const destino = await connection('ddd').where('cod', id_destino);
 
-        let valor = 0
-
-
-        switch (origem[0].cod == 11) {
-            case destino[0].cod[0] == 16:
+        let ValorSemPlano = 0
+        let valorComPlano = 0
+        
+        if (origem[0].cod == 11) {
+            if (destino[0].cod == 16) {
                 if (plano[0].time != 0) {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (1.90 + 0.19)
-                    return response.json(valor);
-
-                } else {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * 1.90
-                    return response.json(valor);
+                    valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (1.90 + 0.19)
                 }
-                break;
-            case destino[0].cod == 17:
+                ValorSemPlano = time * 1.90
+                
+                return response.json({ valorComPlano, ValorSemPlano });
+            } if (destino[0].cod == 17) {
                 if (plano[0].time != 0) {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (1.70 + 0.17)
-                    return response.json(valor);
-                    
-                } else {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * 1.70
-                    return response.json(valor);
-                    
+                    valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (1.70 + 0.17)
                 }
-                break;
-            case destino[0].cod == 18:
+                ValorSemPlano = time * 1.70
+                console.log({ valorComPlano, ValorSemPlano })
+                return response.json({ valorComPlano, ValorSemPlano });
+            } if (destino[0].cod == 18) {
                 if (plano[0].time != 0) {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (0.90 + 0.09)
-                    return response.json(valor);
-                    
-                } else {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * 0.90
-                    return response.json(valor);
-                    
+                    valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (0.90 + 0.09)
                 }
-                break;
-            default:
-            // code block
+                ValorSemPlano = time * 0.90
+                return response.json({ valorComPlano, ValorSemPlano });
+            } else {
+                return response.json("No momento não é possivel fazer essa ligação essas localidades");
+            }
         }
-        switch (origem[0].cod == 16) {
-            case destino[0].cod == 11:
+        if (origem[0].cod == 16) {
+            if (destino[0].cod == 11) {
                 if (plano[0].time != 0) {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (2.90 + 0.29)
-                    return response.json(valor);
-                    
-                } else {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * 2.90
-                    return response.json(valor);
-                    
+                    valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (2.90 + 0.29)
                 }
-                break;
-            default:
-            // code block
-        }
+                ValorSemPlano = time * 2.90
 
-        switch (origem[0].cod == 17) {
-            case destino[0].cod == 11:
+                return response.json({ valorComPlano, ValorSemPlano });
+            } else {
+                return response.json("No momento não é possivel fazer essa ligação essas localidades");
+            }
+
+        } if (origem[0].cod == 17) {
+            if (destino[0].cod == 11) {
                 if (plano[0].time != 0) {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (2.70 + 0.27)
-                    return response.json(valor);
-                    
-                } else {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * 2.70
-                    return response.json(valor);
+                    valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (2.70 + 0.27)
                 }
-                break;
-            default:
-            // code block
+                ValorSemPlano = time * 2.70
+                return response.json({ valorComPlano, ValorSemPlano });
+            } else {
+                return response.json("No momento não é possivel fazer essa ligação essas localidades");
+            }
+        } if (origem[0].cod == 18) {
+            if (destino[0].cod == 11) {
+                if (plano[0].time != 0) {
+                    valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (1.90 + 0.19);
+                }
+                ValorSemPlano = time * 1.90
+                return response.json({ valorComPlano, ValorSemPlano });
+
+            } else {
+                return response.json("No momento não é possivel fazer essa ligação essas localidades");
+            }
         }
 
-        switch (origem[0].cod == 18) {
-            case destino[0].cod == 11:
-                if (plano[0].time != 0) {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (1.90 + 0.19)
-                    return response.json(valor);
-                } else {
-                    valor = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * 1.90
-                    return response.json(valor);
-                }
-                break;
-            default:
-            // code block
-        }
     }
+
+
+
 }
+//fiz com ifs pq o switch bugou n sei o pq. sinto muito
