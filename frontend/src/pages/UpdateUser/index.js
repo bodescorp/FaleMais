@@ -22,16 +22,16 @@ export default function Register() {
             setPlanos(response.data);
         })
     }, [n]);
-    
+
     async function handleUpdate(e) {
         e.preventDefault();
 
         const data = {
             falemais_id
         };
-        
+
         try {
-            const response = await api.put('users', data,{
+            const response = await api.put('users', data, {
                 headers: {
                     authorization: cpf,
                 }
@@ -63,6 +63,7 @@ export default function Register() {
                 <form onSubmit={handleUpdate}>
 
                     <select id="aparencia-select" value={falemais_id} onChange={e => setfalemais_id(Number(e.target.value))}>
+                        <option value="" disabled selected hidden>Selecionse o DDD de Origem</option>
                         {planos.map(planos => (
                             <option key={planos.id} value={planos.id}>{planos.title}</option>
                         ))}

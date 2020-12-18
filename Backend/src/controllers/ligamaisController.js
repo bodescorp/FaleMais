@@ -18,6 +18,7 @@ module.exports = {
         
         if (origem[0].cod == 11) {
             if (destino[0].cod == 16) {
+                valorComPlano =time * 1.90
                 if (plano[0].time != 0) {
                     valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (1.90 + 0.19)
                 }
@@ -25,6 +26,7 @@ module.exports = {
                 
                 return response.json({ valorComPlano, ValorSemPlano });
             } if (destino[0].cod == 17) {
+                valorComPlano =time * 1.70
                 if (plano[0].time != 0) {
                     valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (1.70 + 0.17)
                 }
@@ -32,6 +34,7 @@ module.exports = {
                 console.log({ valorComPlano, ValorSemPlano })
                 return response.json({ valorComPlano, ValorSemPlano });
             } if (destino[0].cod == 18) {
+                valorComPlano = time * 0.90
                 if (plano[0].time != 0) {
                     valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (0.90 + 0.09)
                 }
@@ -43,6 +46,7 @@ module.exports = {
         }
         if (origem[0].cod == 16) {
             if (destino[0].cod == 11) {
+                valorComPlano = time * 2.90
                 if (plano[0].time != 0) {
                     valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (2.90 + 0.29)
                 }
@@ -55,6 +59,7 @@ module.exports = {
 
         } if (origem[0].cod == 17) {
             if (destino[0].cod == 11) {
+                valorComPlano = time * 2.70
                 if (plano[0].time != 0) {
                     valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (2.70 + 0.27)
                 }
@@ -65,6 +70,7 @@ module.exports = {
             }
         } if (origem[0].cod == 18) {
             if (destino[0].cod == 11) {
+                ValorComPlano = time * 1.90
                 if (plano[0].time != 0) {
                     valorComPlano = (time - plano[0].time < 0) ? 0 : (time - plano[0].time) * (1.90 + 0.19);
                 }

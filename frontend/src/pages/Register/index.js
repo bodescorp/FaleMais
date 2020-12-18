@@ -79,6 +79,7 @@ export default function Register() {
                     />
 
                     <select id="aparencia-select" value={falemais_id} onChange={e => setfalemais_id(Number(e.target.value))}>
+                    <option value="" disabled selected hidden>Selecionse o DDD de Origem</option>
                         {planos.map(planos => (
                             <option key={planos.id} value={planos.id}>{planos.title}</option>
                         ))}
